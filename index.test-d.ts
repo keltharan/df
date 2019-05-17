@@ -6,6 +6,7 @@ expectType<Promise<SpaceInfo[]>>(df());
 expectType<Promise<SpaceInfo>>(df.fs('/dev/disk1'));
 expectType<Promise<SpaceInfo>>(df.file('info.txt'));
 
+// @ts-ignore
 const spaceInfo = await df.fs('/dev/disk1');
 
 expectType<string>(spaceInfo.filesystem);

@@ -1,19 +1,17 @@
 {
-	"name": "@sindresorhus/df",
+	"name": "@keltharan/df",
 	"version": "3.1.0",
-	"description": "Get free disk space info from `df -kP`",
+	"description": "Get free disk space info from `df -k` due to qnap arm",
 	"license": "MIT",
-	"repository": "sindresorhus/df",
+	"repository": "keltharan/df",
 	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"name": "keltharan"
 	},
 	"engines": {
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava && tsd"
+		"test": "ava && tsd"
 	},
 	"files": [
 		"index.js",
@@ -21,8 +19,8 @@
 	],
 	"keywords": [
 		"df",
-		"dfkp",
-		"df-kp",
+		"dfk",
+		"df-k",
 		"disk",
 		"space",
 		"free",
@@ -36,12 +34,12 @@
 		"size",
 		"capacity"
 	],
+
 	"dependencies": {
 		"execa": "^1.0.0"
 	},
 	"devDependencies": {
 		"ava": "^1.4.1",
-		"tsd": "^0.7.1",
-		"xo": "^0.24.0"
+		"tsd": "^0.7.1"
 	}
 }

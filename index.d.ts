@@ -34,11 +34,13 @@ declare namespace df {
 
 declare const df: {
 	/**
-	 * Get free disk space info from [`df -kP`](https://en.wikipedia.org/wiki/Df_\(Unix\)).
+	 * Get free disk space info from [`df -k`](https://en.wikipedia.org/wiki/Df_\(Unix\)).
+	 * http://man7.org/linux/man-pages/man1/df.1.html
 	 *
+	 * @param args overrule -k default
 	 * @returns A list of space info objects for each filesystem.
 	 */
-	(): Promise<df.SpaceInfo[]>;
+	(args?:string): Promise<df.SpaceInfo[]>;
 
 	/**
 	 * @param path - Path to a filesystem device file. Example: `'/dev/disk1'`.
@@ -51,9 +53,6 @@ declare const df: {
 	 * @returns Space info for the filesystem the given file is part of.
 	 */
 	file(path: string): Promise<df.SpaceInfo>;
-
-	// TODO: remove this in the next major version
-	default: typeof df;
 };
 
 export = df;
