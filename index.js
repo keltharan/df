@@ -3,8 +3,8 @@
 const execa = require('execa');
 
 const flag = '-k';
-const blockParse = /\d+\w*(?=-blocks)/gi;
-const blockSize = /(\d+)([KMG])/gi;
+const blockParse = /\d+\w*(?=-blocks)/i;
+const blockSize = /(\d+)([KMG])/i;
 const mntPoint = /\s(\/.*)\s*$/i;
 const devicePlaceholder = '\\s*(.*)(?:\\s+on\\s+{MOUNTPOINT})';
 
@@ -65,7 +65,7 @@ const prepareLine = (line, mount) => {
 		throw new TypeError('Mountpoint cannot be found!');
 	}
 
-	const deviceParser = new RegExp(devicePlaceholder.replace('{MOUNTPOINT}', mnt[1]), 'gi');
+	const deviceParser = new RegExp(devicePlaceholder.replace('{MOUNTPOINT}', mnt[1]), 'i');
 
 	for (const mountLine of mount.split('\n')) {
 		const mountPointAccess = deviceParser.exec(mountLine);
