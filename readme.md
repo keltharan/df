@@ -1,23 +1,24 @@
 # df [![Build Status](https://travis-ci.org/sindresorhus/df.svg?branch=master)](https://travis-ci.org/sindresorhus/df)
 
-> Get free disk space info from [`df -kP`](https://en.wikipedia.org/wiki/Df_\(Unix\))
+> Get free disk space info from [`df -k`](https://en.wikipedia.org/wiki/Df_\(Unix\))
+Convert blocksize defined in http://man7.org/linux/man-pages/man1/df.1.html
 
-Works on any Unix-based system like macOS and Linux.
+Works on any Unix-based system like macOS and Linux. (also entware compatible)
 
-*Created because all the other `df` wrappers are terrible. This one uses simple and explicit parsing. Uses `execFile` rather than `exec`. Ensures better platform portability by using the `-P` flag. Returns sizes in bytes instead of kilobytes and the capacity as a float.*
+*Created because all the other `df` wrappers are terrible. This one uses simple and explicit parsing. Uses `execa` rather than `exec`. Returns sizes in bytes and the capacity as a float.*
 
 
 ## Install
 
 ```
-$ npm install @sindresorhus/df
+$ npm install @keltharan/df
 ```
 
 
 ## Usage
 
 ```js
-const df = require('@sindresorhus/df');
+const df = require('@keltharan/df');
 
 (async () => {
 	console.log(await df());
@@ -56,8 +57,8 @@ const df = require('@sindresorhus/df');
 
 ## API
 
-### df()
-
+### df(args?)
+args: overrules -k. can be used to change blocksize
 Returns a `Promise<Object[]>` with a list of space info objects for each filesystem.
 
 ### df.fs(path)
@@ -88,6 +89,5 @@ Type: `string`
 Path to a file on the filesystem to get the space info for.
 
 
-## License
-
+## License(origin)
 MIT © [Sindre Sorhus](https://sindresorhus.com)
