@@ -4,7 +4,7 @@ const execa = require('execa');
 
 const flag = '-k';
 const blockParse = /\d+\w*(?=-blocks)/gi;
-const blockSize = /(\d+)([KMG])/g;
+const blockSize = /(\d+)([KMG])/gi;
 const mntPoint = /\s(\/.*)\s*$/i;
 const devicePlaceholder = '\\s*(.*)(?:\\s+on\\s+{MOUNTPOINT})';
 
@@ -20,7 +20,7 @@ const run = async args => {
 		const convertK = blockSize.exec(convertMatch[0]);
 		if (convertK) {
 			// http://man7.org/linux/man-pages/man1/df.1.html
-			convert = convertK[1] * getSize(convertK[2]);
+			convert = convertK[1] * getSize(convertK[2].toLocaleUpperCase());
 		} else {
 			convert = parseInt(convertMatch[0], 10);
 		}
